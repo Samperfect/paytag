@@ -1,6 +1,6 @@
-# Cashtag
+# Paytag
 
-Cashtag is a simple yet powerful and fluid payment and funds transfer application that allows for the crossborder movement and spending of money such that funds do not necessarily have to be in hand before purchases and payment of services can be made.
+Paytag is a simple yet powerful and fluid payment and funds transfer application that allows for the crossborder movement and spending of money such that funds do not necessarily have to be in-hand before purchases and payment of services can be made.
 
 With **paytag** all you need is just a code containing 5 Alphanumeric characters and you are good to go for the day!
 
