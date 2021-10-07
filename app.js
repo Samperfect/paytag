@@ -13,6 +13,7 @@ const auth = new Auth();
 const { mainRouter } = require('./routes/main');
 const { userRouter } = require('./routes/user');
 const { tagRouter } = require('./routes/tag');
+const { paymentRouter } = require('./routes/payment');
 // getting the express routers end
 
 // getting the config variables
@@ -62,8 +63,11 @@ app.use(mainRouter);
 // Everything relating to the user components
 app.use('/user', userRouter);
 
-// Everything relating to the user components
+// Everything relating to the tag components
 app.use('/tag', tagRouter);
+
+// Everything relating to the payment components
+app.use('/hidden', paymentRouter);
 
 // 404 Error Handler
 app.all('*', (req, res) => {
