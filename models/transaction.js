@@ -5,48 +5,29 @@ const transactionSchema = mongoose.Schema(
     _id: mongoose.Schema.Types.ObjectId,
     tag: {
       type: String,
-      require: true,
     },
     amount: {
       type: Number,
       require: true,
     },
-    pin: {
-      type: Number,
-    },
-    amountLeft: {
-      type: Number,
-    },
-    hasExpired: {
-      type: Boolean,
+    description: {
+      type: String,
       require: true,
-      default: false,
     },
-    isTimed: {
-      type: Boolean,
+    sign: {
+      type: String,
       require: true,
-      default: false,
     },
-    expireAt: {
-      type: Date,
+    media: {
+      type: String,
+      require: true,
+      default: 'assets/img/favicon.png',
     },
 
-    author: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'user',
-        },
-      },
-    ],
-    // history: [
-    //   {
-    //     withdrawalId: {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: 'history',
-    //     },
-    //   },
-    // ],
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
+    },
   },
   { timestamps: true }
 );

@@ -1,22 +1,39 @@
 <% if(success_msg != '') { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <%= success_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+
+<div
+  class="alert alert-imaged alert-success alert-dismissible fade show"
+  role="alert"
+>
+  <!-- <div class="icon-wrap">
+                            <ion-icon name="card-outline"></ion-icon>
+                        </div> -->
+  <div><%= success_msg %></div>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
 </div>
+
 <% } %> <% if(error_msg != '') { %>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div><%= error_msg %></div>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
 </div>
 <% } %> <% if(error != '') { %>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <div><%= error %></div>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
 </div>
 <% } %>

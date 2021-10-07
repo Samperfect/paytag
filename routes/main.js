@@ -4,9 +4,9 @@ const express = require('express');
 const mainRouter = express.Router();
 
 // requiring the user controllers
-const { homepageController } = require('../controllers/main');
+const homepageController = require('../controllers/main');
 
-mainRouter.get('/', homepageController);
+mainRouter.get('/', homepageController.home);
 
 // exporting the mainRouter
 module.exports = { mainRouter };

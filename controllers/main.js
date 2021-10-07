@@ -1,7 +1,10 @@
 // defining the homepage controller function
-homepageController = (req, res) => {
+APITest = (req, res) => {
   res.json({ status: true, message: 'The APP is fully functional' });
+};
+home = (req, res) => {
+  res.render('about');
 };
 
 // exporting the controller modules
-module.exports = { homepageController };
+module.exports = { APITest, home };

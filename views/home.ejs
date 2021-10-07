@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from Paytag.bragherstudio.com/view4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Sep 2021 23:26:29 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Paytag</title>
+    <meta name="description" content="Paytag HTML Mobile Template" />
+    <meta
+      name="keywords"
+      content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/img/favicon.png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/icon/192x192.png"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="manifest" href="__manifest.json" />
+  </head>
+
+  <body>
+    <!-- loader -->
+    <div id="loader">
+      <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon" />
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+ <%- include('./partials/header') %>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+      <!-- Wallet Card -->
+      <div class="section wallet-card-section pt-1">
+        <div class="wallet-card">
+          <!-- Balance -->
+          <div class="balance">
+            <div class="left">
+              <span class="title">Total Balance</span>
+              <h1 class="total">$ 2,562.50</h1>
+            </div>
+            <div class="right">
+              <a
+                href="#"
+                class="button"
+                data-bs-toggle="modal"
+                data-bs-target="#depositActionSheet"
+              >
+                <ion-icon name="add-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+          <!-- * Balance -->
+          <!-- Wallet Footer -->
+          <div class="wallet-footer">
+            <div class="item">
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#sendActionSheet"
+              >
+                <div class="icon-wrapper bg-danger">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </div>
+                <strong>Send</strong>
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#reedemActionSheet"
+              >
+                <div class="icon-wrapper" style="background-color: #793E92;">
+                  <ion-icon name="arrow-up-outline"></ion-icon>
+                </div>
+                <strong>Reedem</strong>
+              </a>
+            </div>
+            <div class="item">
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#withdrawActionSheet"
+              >
+                <div class="icon-wrapper" style="background-color: #000;">
+                  <ion-icon name="arrow-down-outline"></ion-icon>
+                </div>
+                <strong>Withdraw</strong>
+              </a>
+            </div>
+          </div>
+          <!-- * Wallet Footer -->
+        </div>
+      </div>
+      <!-- Wallet Card -->
+
+      <!-- Deposit Action Sheet -->
+      <div
+        class="modal fade action-sheet"
+        id="depositActionSheet"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Deposit Money</h5>
+            </div>
+            <div class="modal-body">
+              <div class="action-sheet-content">
+                <form>
+                  <div class="form-group basic">
+                    <div class="input-wrapper">
+                      <label class="label" for="account1">From</label>
+                      <select required name="method" class="form-control custom-select" id="account1">
+                        <option  value="bank">Add Account</option>
+                        <option  value="crypto">Crypto Deposit</option>
+                        <option  value="0">Savings (*** 5019)</option>
+                        <option value="1">Current (*** 6212)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group basic">
+                    <label class="label">Enter Amount</label>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addona1">₦</span>
+                      <input
+                        type="number"
+                        required
+                        class="form-control"
+                        placeholder="Minimum deposit is 500"
+                         name="amount"
+                        min="500"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group basic">
+                     <input
+                      type="submit"
+                      class="btn btn-primary btn-block btn-lg"
+                      value="Deposit"
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * Deposit Action Sheet -->
+
+      <!-- Withdraw Action Sheet -->
+      <div
+        class="modal fade action-sheet"
+        id="withdrawActionSheet"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Withdraw Money</h5>
+            </div>
+             <div class="modal-body">
+              <div class="action-sheet-content">
+                <form action="/withdraw">
+
+                  <div class="form-group basic">
+                    <label class="label">Enter Amount</label>
+                    <div class="input-group mb-2">
+                      <span class="input-group-text" id="basic-addona1">₦</span>
+                      <input
+                        type="number"
+                        required
+                        class="form-control"
+                        placeholder="Minimum withdrawal is 500"
+                         name="amount"
+                        min="500"
+                      />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group basic">
+                    <div class="input-wrapper">
+                      <label  class="label" for="account1">Bank Account</label>
+                      <select required name="bank" class="form-control custom-select" id="account1">
+                        <option  value="0">Savings (*** 5019)</option>
+                        <option value="1">Current (*** 6212)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  
+
+                  <div class="form-group basic">
+                       <input
+                      type="submit"
+                      class="btn btn-primary btn-block btn-lg"
+                      value="Withdraw"
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * Withdraw Action Sheet -->
+
+      <!-- Send Action Sheet -->
+      <div
+        class="modal fade action-sheet"
+        id="sendActionSheet"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Send Money</h5>
+            </div>
+            <div class="modal-body">
+              <div class="action-sheet-content">
+                <p class="text-muted" style="line-height: initial">
+                  Sending money is as easy as generating a Paytag in one click!
+                  Enter the amount and hit send!
+                </p>
+                <p class="text-muted" style="line-height: initial">
+                  Just enter the amount and hit send!
+                </p>
+
+                <form action="" autocomplete="off">
+                  <div class="form-group basic">
+                    <label class="label">Enter Amount</label>
+                    <div class="input-group mb-2">
+                      <input type="number" style="display:none;">
+                      <span class="input-group-text" id="basic-addonb1">₦</span>
+                      <input
+                        type="number"
+                        required
+                        class="form-control"
+                        placeholder="Minimum amount is 50"
+                        name="amount"
+                        min="50"
+                        autocomplete="off"
+                       
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group basic">
+                    <label class="label">Paytag Pin (optional)</label>
+
+                    <div class="input-group mb-2">
+                      <input type="password" style="display:none;">
+                           <span class="input-group-text" id="basic-addonb1"><ion-icon name="key-outline"></ion-icon></span>
+                         
+                      <input
+                        type="password"
+                        autocomplete="off"
+                        name="pin"
+                        class="form-control"
+                        placeholder="secure your Paytag with a 4-digit pin."
+                        minlength="4"
+                        maxlength="4"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <!-- data-bs-dismiss="modal" -->
+                  <div class="form-group basic">
+                       <input
+                      type="submit"
+                      class="btn btn-primary btn-block btn-lg"
+                      value="Send"
+                    >
+                    
+                    </input>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * Send Action Sheet -->
+
+
+      
+      <!-- Send Action Sheet -->
+      <div
+        class="modal fade action-sheet"
+        id="reedemActionSheet"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Reedem Paytag</h5>
+            </div>
+            <div class="modal-body">
+              <div class="action-sheet-content">
+                <p class="text-muted" style="line-height: initial">
+                 Reedem the funds in a Paytag into your account.
+                </p>
+                <p class="text-muted" style="line-height: initial">
+                  You only need a pin if the Paytag has one!
+                </p>
+
+                <form action="" autocomplete="off">
+                  <div class="form-group basic">
+                    <label class="label">Enter Paytag</label>
+                    <div class="input-group mb-2">
+                      <input type="text" style="display:none;">
+                      <span class="input-group-text" id="basic-addonb1"><ion-icon name="pricetag-outline"></ion-icon></span>
+                      <input
+                        type="text"
+                        required
+                        class="form-control"
+                        placeholder="Enter your Paytag"
+                        name="paytag"
+                        minlength="5"
+                        maxlength="5"
+                        autocomplete="off"
+                        autocapitalize="characters"
+                        style="text-transform: uppercase;"
+                       
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group basic">
+                    <label class="label">Paytag Pin (optional)</label>
+
+                    <div class="input-group mb-2">
+                      <input type="password" style="display:none;">
+                           <span class="input-group-text" id="basic-addonb1"><ion-icon name="key-outline"></ion-icon></span>
+                         
+                      <input
+                        type="password"
+                        autocomplete="off"
+                        name="pin"
+                        class="form-control"
+                        placeholder="only if the Paytag requires a pin"
+                        minlength="4"
+                        maxlength="4"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <!-- data-bs-dismiss="modal" -->
+                  <div class="form-group basic">
+                       <input
+                      type="submit"
+                      class="btn btn-primary btn-block btn-lg"
+                      value="Reedem"
+                    >
+                    
+                    </input>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * Send Action Sheet -->
+   
+
+      <!-- Stats -->
+      <div class="section">
+        <div class="row mt-2">
+          <div class="col-6">
+            <div class="stat-box">
+              <div class="title">Total In</div>
+              <div class="value text-success">$ 552.95</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-box">
+              <div class="title">Total Spent</div>
+              <div class="value text-danger">$ 86.45</div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            <div class="stat-box">
+              <div class="title">Total Withdrawn</div>
+              <div class="value">$ 53.25</div>
+            </div>
+          </div>
+          <!-- <div class="col-6">
+            <div class="stat-box">
+              <div class="title">Savings</div>
+              <div class="value">$ 120.99</div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <!-- * Stats -->
+
+      <!-- Transactions -->
+      <div class="section mt-4">
+        <div class="section-heading">
+          <h2 class="title">Transactions</h2>
+          <a href="/transactions" class="link">View All</a>
+        </div>
+        <div class="transactions">
+          <!-- item -->
+          <a href="app-transaction-detail.html" class="item">
+            <div class="detail">
+              <img
+                src="assets/img/sample/brand/1.jpg"
+                alt="img"
+                class="image-block imaged w48"
+              />
+              <div>
+                <strong>Amazon</strong>
+                <p>Shopping</p>
+              </div>
+            </div>
+            <div class="right">
+              <div class="price text-danger">- $ 150</div>
+            </div>
+          </a>
+          <!-- * item -->
+          <!-- item -->
+          <a href="app-transaction-detail.html" class="item">
+            <div class="detail">
+              <img
+                src="assets/img/sample/brand/2.jpg"
+                alt="img"
+                class="image-block imaged w48"
+              />
+              <div>
+                <strong>Apple</strong>
+                <p>Appstore Purchase</p>
+              </div>
+            </div>
+            <div class="right">
+              <div class="price text-danger">- $ 29</div>
+            </div>
+          </a>
+          <!-- * item -->
+          <!-- item -->
+          <a href="app-transaction-detail.html" class="item">
+            <div class="detail">
+              <img
+                src="assets/img/sample/avatar/avatar3.jpg"
+                alt="img"
+                class="image-block imaged w48"
+              />
+              <div>
+                <strong>Alex Ljung</strong>
+                <p>Transfer</p>
+              </div>
+            </div>
+            <div class="right">
+              <div class="price">+ $ 1,000</div>
+            </div>
+          </a>
+          <!-- * item -->
+          <!-- item -->
+          <a href="app-transaction-detail.html" class="item">
+            <div class="detail">
+              <img
+                src="assets/img/sample/avatar/avatar4.jpg"
+                alt="img"
+                class="image-block imaged w48"
+              />
+              <div>
+                <strong>Beatriz Brito</strong>
+                <p>Transfer</p>
+              </div>
+            </div>
+            <div class="right">
+              <div class="price text-danger">- $ 186</div>
+            </div>
+          </a>
+          <!-- * item -->
+        </div>
+      </div>
+      <!-- * Transactions -->
+
+      <!-- app footer -->
+      <div class="appFooter">
+        <div class="footer-title">
+          Copyright © Paytag 2021. All Rights Reserved.
+        </div>
+      </div>
+      <!-- * app footer -->
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+ <%- include('./partials/menu') %>
+  
+    <!-- * App Bottom Menu -->
+
+    <!-- App Sidebar -->
+ <%- include('./partials/sidebar') %>
+    <!-- * App Sidebar -->
+
+<!-- PWA SECTION -->
+ <%- include('./partials/pwa') %>
+<!-- PWA SECTION END -->
+
+    <!-- ========= JS Files =========  -->
+ <%- include('./partials/footer') %>
+    
+  </body>
+
+  <!-- Mirrored from Paytag.bragherstudio.com/view4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Sep 2021 23:26:40 GMT -->
+</html>

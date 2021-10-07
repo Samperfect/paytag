@@ -28,7 +28,7 @@ class Mail {
       To: user.email,
       From: this.adminOrder,
       Subject: `OTP To Complete Login`,
-      Body: `<p>Hello ${user.fname},</p><p>Find below your OTP to complete your login</p><p>${otp}</p>`,
+      Body: `<p>Hello ${user.firstName},</p><p>Find below your OTP to complete your login</p><p>${otp}</p>`,
     };
 
     // sending the mail

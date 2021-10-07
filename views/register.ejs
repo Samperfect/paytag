@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from finapp.bragherstudio.com/view4/app-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Sep 2021 23:26:59 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template" />
+    <meta
+      name="keywords"
+      content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/img/favicon.png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/icon/192x192.png"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="manifest" href="__manifest.json" />
+  </head>
+
+  <body>
+    <!-- loader -->
+    <div id="loader">
+      <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon" />
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader no-border transparent position-absolute">
+      <div class="left">
+        <a href="#" class="headerButton goBack">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="pageTitle"></div>
+      <div class="right">
+        <a href="/user/signin" class="headerButton">Sign In</a>
+      </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+      <div class="section mt-2 text-center">
+        <h1>Sign Up</h1>
+        <h5>One step to paying with tags!</h5>
+      </div>
+
+      <div class="section mb-5 p-2">
+        <%- include('./partials/flash') %>
+        <form action="/user/signup" method="POST">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="username1">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username1"
+                    name="username"
+                    autocomplete="username"
+                    placeholder="Pick a username"
+                    style="text-transform: lowercase"
+                    minlength="4"
+                    required
+                  />
+                  <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="email1">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email1"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Your email address"
+                    required
+                  />
+                  <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="fname">First Name</label>
+                  <input
+                    type="text"
+                    autocomplete="given-name"
+                    class="form-control"
+                    id="fname"
+                    name="firstName"
+                    placeholder="Your first name"
+                    required
+                  />
+                  <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="lname">Last Name</label>
+                  <input
+                    autocomplete="family-name"
+                    type="text"
+                    class="form-control"
+                    id="lname"
+                    name="lastName"
+                    placeholder="Your last name"
+                    required
+                  />
+                  <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="country">Country</label>
+                  <select
+                    required
+                    autocomplete="off"
+                    name="country"
+                    class="form-control custom-select"
+                    id="country"
+                  >
+                    <option value="nigeria">Nigeria</option>
+                    <option value="usa">United States</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group basic">
+                <label class="label" for="password1">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text" id="view_password"
+                    ><ion-icon name="eye-off-outline"></ion-icon
+                  ></span>
+                  <input
+                    type="password"
+                    autocomplete="new-password"
+                    class="form-control"
+                    id="password1"
+                    name="password"
+                    placeholder="Should be at least 6 characters"
+                    minlength="6"
+                  />
+                  <i class="clear-input">
+                    <ion-icon name="close-circle"></ion-icon>
+                  </i>
+                </div>
+              </div>
+
+              <div class="custom-control custom-checkbox mt-2 mb-1">
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    disabled
+                    checked
+                    class="form-check-input"
+                    id="customCheckb1"
+                  />
+                  <label class="form-check-label" for="customCheckb1">
+                    I agree
+                    <a
+                      href="#"
+                      data-bs-toggle="modal"
+                      data-bs-target="#termsModal"
+                      >terms and conditions</a
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-button-group transparent">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- Terms Modal -->
+    <div
+      class="modal fade modalbox"
+      id="termsModal"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Terms and Conditions</h5>
+            <a href="#" data-bs-dismiss="modal">Close</a>
+          </div>
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              fermentum, urna eget finibus fermentum, velit metus maximus erat,
+              nec sodales elit justo vitae sapien.
+            </p>
+            <p>
+              Donec in justo urna. Fusce pretium quam sed viverra blandit.
+              Vivamus a facilisis lectus. Nunc non aliquet nulla. Aenean arcu
+              metus, dictum tincidunt lacinia quis, efficitur vitae dui.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- * Terms Modal -->
+
+    <!-- ========= JS Files =========  -->
+    <%- include('./partials/footer') %>
+  </body>
+
+  <!-- Mirrored from finapp.bragherstudio.com/view4/app-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Sep 2021 23:26:59 GMT -->
+</html>

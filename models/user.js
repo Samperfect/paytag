@@ -24,10 +24,15 @@ const userSchema = mongoose.Schema(
       type: String,
       require: true,
     },
-    address: {
+    country: {
       type: String,
       require: true,
     },
+    profileImg: {
+      type: String,
+      default: process.env.PUBLIC_URL,
+    },
+
     //   USER INFORMATION END
 
     // VERIFICATION DATA
@@ -57,6 +62,19 @@ const userSchema = mongoose.Schema(
     // VERIFICATION DATA END
 
     // TRANSACTION AND CASH INFO
+    currency: {
+      type: String,
+      require: true,
+      default: '₦',
+    },
+    tags: [
+      {
+        tagId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'tag',
+        },
+      },
+    ],
     transactions: [
       {
         transactionId: {
@@ -74,6 +92,11 @@ const userSchema = mongoose.Schema(
       },
     ],
     wallet: {
+      type: Number,
+      require: true,
+      default: 0,
+    },
+    spent: {
       type: Number,
       require: true,
       default: 0,

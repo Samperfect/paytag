@@ -1,4 +1,7 @@
 // importing the required modules
+const { Tag } = require('../models/tag');
+const { User } = require('../models/user');
+const { v4: uuidv4 } = require('uuid');
 
 // defining the utils class
 class Utils {
@@ -54,42 +57,6 @@ class Utils {
       CLINK_CREATE_SUCCESS: 'Your clink has been published',
       OPERATION_DUPLICATE_ERROR: "You've already executed that action",
     };
-
-    // defining all the possible interest sections that can be added by a user
-    this.interests = [
-      'affiliate & digital marketing',
-      'agriculture',
-      'art & culture',
-      'beauty & skin care',
-      'chess palace',
-      'climate & environment',
-      'content & creative writing',
-      'cryptocurrency & fx',
-      'politics',
-      'photography & cinematography',
-      'music',
-      'media & communication',
-      'job updates',
-      'health & fitness',
-      'grants for entrepreneurs',
-      'gadget',
-      'gaming',
-      'freelancing',
-      'food & pastries',
-      'finance & fin tech',
-      'forestry',
-      'fashion',
-      'events',
-      'engineering & manufacturing',
-      'energy sustainability',
-      'designers & developers hub',
-      'data analysis',
-      'cyber security',
-      'readers corner',
-      'scholarship updates',
-      'sport',
-      'tourism',
-    ];
   }
 
   // extending the object prototype to check for empty objects
@@ -100,6 +67,20 @@ class Utils {
       }
     }
     return true;
+  }
+
+  // helper function for generating tags
+  async generateTag() {
+    const tag = uuidv4().toUpperCase().slice(0, 6);
+
+    //  checking if tag exists
+    const dup = await Tag.findOne({ tag: tag });
+    if (dup) {
+      //   using recursion to regenerate otp
+      await this.generateTag();
+    } else {
+      return tag;
+    }
   }
 }
 

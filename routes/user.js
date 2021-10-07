@@ -3,10 +3,10 @@ const express = require('express');
 const { Auth } = require('../middlewares/auth');
 
 // instantiating the middleware
-auth = new Auth();
+const auth = new Auth();
 
 // creating the router object
-const userRouter = express.Router({ strict: true });
+const userRouter = express.Router();
 
 // requiring the user controllers
 const user = require('../controllers/user');
@@ -28,6 +28,15 @@ userRouter.get(
   auth.destroySession,
   user.logoutUser
 );
+
+// user dashboard route
+userRouter.get('/', auth.loginRequired, user.dashboard);
+
+// user authentication route
+userRouter.get('/authenticate', auth.loginRedirect, user.authController);
+
+// user authentication route
+userRouter.post('/authenticate', auth.loginRedirect, user.authenticate);
 
 // update user profile post
 userRouter.post('/update', auth.loginRequired, user.updateUser);

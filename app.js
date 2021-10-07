@@ -2,12 +2,17 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-
+const flash = require('connect-flash');
+const { Auth } = require('./middlewares/auth');
 // requiring the needed modules end
+
+// instantiating internal middlewares
+const auth = new Auth();
 
 // getting the express routers
 const { mainRouter } = require('./routes/main');
 const { userRouter } = require('./routes/user');
+const { tagRouter } = require('./routes/tag');
 // getting the express routers end
 
 // getting the config variables
@@ -18,11 +23,19 @@ PORT = process.env.PORT;
 const app = express();
 // initializing the application end
 
+// using external middlewares
+app.use(auth.new_session);
+app.use(flash());
+app.use(auth.messages);
+
 // setting up middlewares
+app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.raw());
 app.use(express.static('./public'));
+app.use('/user', express.static('./public'));
+app.use('/tag', express.static('./public'));
 app.use(require('cors')());
 // setting up middlewares end
 
@@ -32,7 +45,12 @@ mongoose
   .connect(dbURI)
   .then(() => {
     app.listen(PORT, () => {
-      console.log('App is listening on port ' + PORT + '...');
+      console.log(
+        'App is listening on port ' +
+          PORT +
+          '...\nVisit http://localhost:' +
+          PORT
+      );
     });
   })
   .catch((error) => console.log(error));
@@ -43,6 +61,9 @@ app.use(mainRouter);
 
 // Everything relating to the user components
 app.use('/user', userRouter);
+
+// Everything relating to the user components
+app.use('/tag', tagRouter);
 
 // 404 Error Handler
 app.all('*', (req, res) => {

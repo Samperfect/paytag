@@ -17,6 +17,7 @@
     "@google-cloud/storage": "^5.14.5",
     "bcrypt": "^5.0.1",
     "buycoins-sdk": "^1.0.0",
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

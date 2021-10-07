@@ -15,7 +15,7 @@ class Auth {
   // destroy session
   destroySession(req, res, next) {
     req.session.destroy((err) => {
-      res.redirect('../../user/login');
+      res.redirect('/user/signin');
       return;
     });
   }
@@ -46,8 +46,8 @@ class Auth {
 
   // already logged in middleware
   loginRedirect(req, res, next) {
-    if (req.session.user) {
-      return res.redirect('/');
+    if (req.session && req.session.user) {
+      return res.redirect('/user');
     }
     next();
   }
@@ -58,13 +58,13 @@ class Auth {
       next();
       return;
     }
-    if (!req.session.user) {
-      return res.redirect('/user/signin');
+    if (req.session && req.session.user) {
+      // getting the user from the database
+      const user = await User.findOne({ _id: req.session.user });
+      req.user = user;
+      return next();
     }
-    // getting the user from the database
-    user = await User.findOne({ _id: req.session.user });
-    req.user = user;
-    return next();
+    return res.redirect('/user/signin');
   }
 
   // validate JWT
