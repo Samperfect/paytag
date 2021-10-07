@@ -14,5 +14,10 @@ const payment = require('../controllers/payment');
 // webhook for sendcash
 paymentRouter.post('/sendcash/verify/', payment.sendCash);
 
+// webhook for buycoins
+paymentRouter.post('/buycoins/verify/', payment.buyCoins);
+
+// webhook for sendcash
+paymentRouter.post('/buycoins/', payment.cryptoDeposit);
 // exporting
 module.exports = { paymentRouter };
