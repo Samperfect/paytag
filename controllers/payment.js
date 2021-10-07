@@ -12,7 +12,7 @@ const utils = new Utils();
 
 // sendCash webhook controller
 const sendCash = async (req, res) => {
-  res.status(200);
+  res.sendStatus(200);
 };
 
 module.exports = { sendCash };
