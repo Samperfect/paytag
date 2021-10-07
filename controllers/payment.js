@@ -20,13 +20,30 @@ const buycoins = new BuyCoins({
 
 // sendCash webhook controller
 const sendCash = async (req, res) => {
+  // collecting the response from sendcash
+  console.log(req.body);
+
   res.sendStatus(200);
 };
 
 // BuyCoins webhook controller
 const buyCoins = async (req, res) => {
   // collecting the response from buycoins
-  console.log(req.body);
+  console.log([req.body]);
+
+  webhook_signature = req.headers['X-Webhook-Signature'];
+
+  // sign events sent to webhook url with webhook token
+  const hash = buycoins.webhook.sign(req.body, process.env.BUYCOINS_TOKEN);
+
+  //verify that requests to your Webhook URL are coming from BuyCoins
+  const isValid = buycoins.webhook.verify(
+    req.body,
+    webhook_token,
+    webhook_signature
+  );
+
+  console.log(isValid);
 
   res.sendStatus(200);
 };
@@ -36,10 +53,25 @@ const cryptoDeposit = async (req, res) => {
   // collecting the response from buycoins
   console.log(req.body);
 
+  try {
+    const account = await buycoins.accounts.createAddress('litecoin');
+
+    console.log(account);
+  } catch (error) {
+    console.log(error);
+    res.json({
+      status: false,
+      message: 'Crypto deposit failed',
+    });
+    return;
+  }
+
   res.json({
     status: true,
     message: 'Crypto deposit initiated',
   });
+
+  return;
 };
 
 module.exports = { sendCash, buyCoins, cryptoDeposit };
