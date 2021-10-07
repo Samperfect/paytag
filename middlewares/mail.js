@@ -12,6 +12,7 @@ class Mail {
     this.password = process.env.EMAIL_PASSWORD;
     this.host = process.env.EMAIL_HOST;
     this.admin = process.env.ADMIN_EMAIL;
+    this.support = 'support@paytag.io';
 
     // computing the path to the email HTML files
   }
@@ -24,7 +25,7 @@ class Mail {
       Username: this.username,
       Password: this.password,
       To: user.email,
-      From: this.adminOrder,
+      From: this.support,
       Subject: `OTP To Complete Login`,
       Body: `<p>Hello ${user.firstName},</p><p>Find below your OTP to complete your login</p><p>${otp}</p>`,
     };
