@@ -17,5 +17,8 @@ tagRouter.post('/generate', auth.loginRequired, user.generateTag);
 // view all user paytag
 tagRouter.get('/paytags', auth.loginRequired, user.paytags);
 
+// redeeem a paytag
+tagRouter.post('/redeem', auth.loginRequired, user.redeemTag);
+
 // exporting
 module.exports = { tagRouter };

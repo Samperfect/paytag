@@ -67,8 +67,5 @@ app.use('/tag', tagRouter);
 
 // 404 Error Handler
 app.all('*', (req, res) => {
-  res.status(404).json({
-    status: false,
-    error: 'And Just Like That, You Completely Lost Your Way 😥',
-  });
+  res.render('404');
 });

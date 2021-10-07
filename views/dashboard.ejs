@@ -91,7 +91,7 @@
                 <div class="icon-wrapper" style="background-color: #793e92">
                   <ion-icon name="arrow-up-outline"></ion-icon>
                 </div>
-                <strong>Reedem</strong>
+                <strong>Redeem</strong>
               </a>
             </div>
             <div class="item">
@@ -329,18 +329,18 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Reedem Paytag</h5>
+              <h5 class="modal-title">Redeem Paytag</h5>
             </div>
             <div class="modal-body">
               <div class="action-sheet-content">
                 <p class="text-muted" style="line-height: initial">
-                  Reedem the funds in a Paytag into your account.
+                  Redeem the funds in a Paytag into your account.
                 </p>
                 <p class="text-muted" style="line-height: initial">
                   You only need a pin if the Paytag has one!
                 </p>
 
-                <form action="" autocomplete="off">
+                <form class="redeem" autocomplete="off">
                   <div class="form-group basic">
                     <label class="label">Enter Paytag</label>
                     <div class="input-group mb-2">
@@ -350,12 +350,13 @@
                       ></span>
                       <input
                         type="text"
+                        id="rpaytag"
                         required
                         class="form-control"
                         placeholder="Enter your Paytag"
                         name="paytag"
-                        minlength="5"
-                        maxlength="5"
+                        minlength="6"
+                        maxlength="6"
                         autocomplete="off"
                         autocapitalize="characters"
                         style="text-transform: uppercase"
@@ -375,6 +376,7 @@
                         type="password"
                         autocomplete="off"
                         name="pin"
+                        id="rpin"
                         class="form-control"
                         placeholder="only if the Paytag requires a pin"
                         minlength="4"
@@ -445,15 +447,15 @@
           <a href="/user/transactions" class="link">View All</a>
         </div>
         <div class="transactions">
-          <% if (user.transactions.length > 5){ %> <% for(let i=0; i < 6; i++){
-          var transaction = user.transactions[i] %>
+          <% if (transactions.length > 4){ %> <% for(let i=0; i < 5; i++){ var
+          transaction = transactions[i] %>
 
           <!-- item -->
           <a
             href="/user/transactions/<%= transaction.transactionId._id %>"
             class="item"
           >
-            <div class="detail">
+            <div style="font-size: 12px" class="detail">
               <img
                 src="<%= transaction.transactionId.media %>"
                 alt="img"
@@ -461,11 +463,26 @@
               />
               <div>
                 <strong><%= transaction.transactionId.description%></strong>
-                <p><%= transaction.transactionId.createdAt %></p>
+                <p>
+                  <%= new
+                  Date(transaction.transactionId.createdAt).toDateString() %>
+                </p>
               </div>
             </div>
             <div class="right">
-              <div class="price text-danger">
+              <div
+                style="font-size: 12px"
+                class="
+                  price
+                  text-<%=
+                  transaction.transactionId.sign
+                  ==
+                  '-'?
+                  'danger':
+                  'success'
+                  %>
+                "
+              >
                 <%= transaction.transactionId.sign %> <%= user.currency %> <%=
                 transaction.transactionId.amount %>
               </div>
@@ -532,6 +549,19 @@
           href="#"
           class="item"
           data-bs-toggle="modal"
+          id="sfmodal"
+          data-bs-target="#sfModal"
+        >
+          <div class="in">
+            <div>Success Form</div>
+          </div>
+        </a>
+      </li>
+      <li style="display: none">
+        <a
+          href="#"
+          class="item"
+          data-bs-toggle="modal"
           id="smodal"
           data-bs-target="#sModal"
         >
@@ -554,7 +584,7 @@
         </a>
       </li>
 
-      <!-- DialogIconedSuccess -->
+      <!-- DialogIconedFailed -->
       <div
         class="modal fade dialogbox"
         id="fModal"
@@ -573,7 +603,34 @@
             <div class="modal-body fmsg">Something went wrong!</div>
             <div class="modal-footer">
               <div class="btn-inline">
-                <a href="#" class="btn" data-bs-dismiss="modal">CLOSE</a>
+                <a href="#" class="btn fclose" data-bs-dismiss="modal">CLOSE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- * DialogIconedFailed -->
+
+      <!-- DialogIconedSuccess -->
+      <div
+        class="modal fade dialogbox"
+        id="sModal"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-icon text-success">
+              <ion-icon name="checkmark-circle"></ion-icon>
+            </div>
+            <div class="modal-header">
+              <h5 class="modal-title rmsg">Success</h5>
+            </div>
+            <!-- <div class="modal-body">Something went wrong!</div> -->
+            <div class="modal-footer">
+              <div class="btn-inline">
+                <a href="#" class="btn rclose" data-bs-dismiss="modal">CLOSE</a>
               </div>
             </div>
           </div>
@@ -584,7 +641,7 @@
       <!-- Dialog Form -->
       <div
         class="modal fade dialogbox"
-        id="sModal"
+        id="sfModal"
         data-bs-backdrop="static"
         tabindex="-1"
         role="dialog"
@@ -613,14 +670,14 @@
               <div class="btn-inline">
                 <button
                   type="button"
-                  class="btn btn-text-secondary"
+                  class="btn btn-text-secondary scopy"
                   data-bs-dismiss="modal"
                 >
                   COPY
                 </button>
                 <button
                   type="button"
-                  class="btn btn-text-primary"
+                  class="btn btn-text-primary sclose"
                   data-bs-dismiss="modal"
                 >
                   CLOSE

@@ -5,6 +5,11 @@ const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const { Mail } = require('../middlewares/mail');
+const { Utils } = require('../middlewares/utils');
+// instantiationg internal middlewares
+const mail = new Mail();
+const utils = new Utils();
 
 class Auth {
   constructor() {
@@ -127,26 +132,9 @@ class Auth {
       const status = await user.save();
 
       // sending the otp to the user and  returning the otp
-      this.sendOTP(status.otp, user);
+      mail.mailOTP(user, status.otp);
       return otp;
     }
-  }
-
-  // send otp
-  sendOTP(otp, user) {
-    const msg = {
-      Host: process.env.EMAIL_HOST,
-      Username: process.env.EMAIL_USERNAME,
-      Password: process.env.EMAIL_PASSWORD,
-      To: user.email,
-      From: `support@clink.com`,
-      Subject: `OTP To Complete Password Recovery`,
-      Body: `<p>Hello ${user.name},</p><p>Find below your OTP to complete your password recovery process.</p><p>${otp}</p>`,
-    };
-
-    Nodemailing.send(msg).then((status) => {
-      //   console.log(msg);
-    });
   }
 
   // generate auth token for user

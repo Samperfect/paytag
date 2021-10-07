@@ -103,7 +103,7 @@ const registerUser = async (req, res) => {
 
       console.log(otp);
 
-      req.flash('success_msg', 'One final step to go!');
+      req.flash('success_msg', 'One final step to go! Check your mailbox.');
       res.redirect('/user/authenticate?next=/user&action=complete');
       return;
     });
@@ -284,6 +284,17 @@ const updateUser = async (req, res) => {
   return;
 };
 
+// get all transactions controller
+const transactions = async (req, res) => {
+  const user = await User.findById(req.user._id).populate(
+    'transactions.transactionId'
+  );
+
+  // const tags = user.tags;
+  const transactions = user.transactions.reverse();
+  res.render('transactions', { user: req.user, transactions: transactions });
+};
+
 // exporting the user controllers
 module.exports = {
   registerController,
@@ -295,4 +306,5 @@ module.exports = {
   authenticate,
   updateUser,
   dashboard,
+  transactions,
 };

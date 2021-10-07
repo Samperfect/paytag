@@ -3,8 +3,6 @@ const { User } = require('../models/user');
 const { Nodemailing } = require('nodemailing');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const { readFile } = require('fs');
-const handlebars = require('handlebars');
 const path = require('path');
 
 class Mail {

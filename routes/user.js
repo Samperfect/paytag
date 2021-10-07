@@ -41,5 +41,8 @@ userRouter.post('/authenticate', auth.loginRedirect, user.authenticate);
 // update user profile post
 userRouter.post('/update', auth.loginRequired, user.updateUser);
 
+// get all transactions route
+userRouter.get('/transactions', auth.loginRequired, user.transactions);
+
 // exporting the mainRouter
 module.exports = { userRouter };
