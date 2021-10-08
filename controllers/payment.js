@@ -99,10 +99,10 @@ const buyCoins = async (req, res) => {
 
     const sum = rate * amount;
 
-    payment.credited = sum.toFixed(2);
+    payment.credited = Number(sum.toFixed(2));
 
-    user.wallet = user.wallet + sum.toFixed(2);
-    user.income = user.income + sum.toFixed(2);
+    user.wallet = user.wallet + Number(sum.toFixed(2));
+    user.income = user.income + Number(sum.toFixed(2));
 
     // saving the user object
     await user.save();
@@ -112,7 +112,7 @@ const buyCoins = async (req, res) => {
 
     // generating the transaction object
     const transact = {
-      amount: sum.toFixed(2),
+      amount: Number(sum.toFixed(2)),
       description: 'Completed crypto deposit',
       sign: '+',
       author: user._id,
