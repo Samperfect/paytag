@@ -1,5 +1,19 @@
 $(document).ready(function () {
   // do stuff
+
+  // setting up dark mode during load time
+  const mode = localStorage.getItem('mode');
+  const body = document.querySelector('body');
+  const dtoggle = document.querySelector('#darkmodeSwitch');
+
+  if (mode) {
+    body.classList.toggle('dark-mode');
+
+    if (dtoggle) {
+      dtoggle.checked = true;
+    }
+  }
+
   $('#loader').fadeOut(1000);
 
   $('.headerButton.goBack').on('click', goBack);
@@ -15,6 +29,13 @@ $(document).ready(function () {
     const body = document.querySelector('body');
 
     body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('mode', 'dark');
+      return;
+    }
+
+    localStorage.removeItem('mode');
   });
 
   $('.scopy').on('click', async () => {
@@ -36,6 +57,7 @@ $(document).ready(function () {
 
     await navigator.clipboard.writeText(paytag.value);
   });
+
   $('#copyaddress').on('click', async () => {
     const paytag = document.querySelector('#cryptoaddress');
 
