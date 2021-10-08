@@ -167,7 +167,13 @@
                   ==
                   '-'?
                   'danger':
+                  transaction.transactionId.sign
+                  ==
+                  '+'
+                  ?
                   'success'
+                  :
+                  'primary'
                   %>
                 "
               >
