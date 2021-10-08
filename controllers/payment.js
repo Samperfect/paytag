@@ -39,11 +39,14 @@ const buyCoins = async (req, res) => {
   //verify that requests to your Webhook URL are coming from BuyCoins
   const isValid = buycoins.webhook.verify(
     req.body,
-    webhook_token,
+    process.env.BUYCOINS_TOKEN,
     webhook_signature
   );
 
   console.log(isValid);
+
+  if (isValid) {
+  }
 
   res.sendStatus(200);
 };
@@ -54,7 +57,11 @@ const cryptoDeposit = async (req, res) => {
   console.log(req.body);
 
   try {
+    // generating a litecoin account
     const account = await buycoins.accounts.createAddress('litecoin');
+
+    // getting the rate of litecoin
+    const rate = buycoins.orders.getPrices({ cryptocurrency: 'litecoin' });
 
     console.log(account);
   } catch (error) {
