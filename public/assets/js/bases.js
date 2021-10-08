@@ -218,17 +218,20 @@ function toggleMenuState() {
   if (finder.length < 2) {
     finder = find[find.length - 2];
 
-    document
-      .querySelector('.appBottomMenu')
-      .querySelector('.active')
-      .classList.toggle('active');
+    const menu = document.querySelector('.appBottomMenu');
 
-    document.querySelector('#' + finder).classList.toggle('active');
+    if (menu) {
+      menu.querySelector('.active');
+      menu.classList.toggle('active');
+      document.querySelector('#' + finder).classList.toggle('active');
+    }
   } else {
-    document
-      .querySelector('.appBottomMenu')
-      .querySelector('.active')
-      .classList.toggle('active');
-    document.querySelector('#' + finder).classList.toggle('active');
+    const menu = document.querySelector('.appBottomMenu');
+
+    if (menu) {
+      menu.querySelector('.active');
+      menu.classList.toggle('active');
+      document.querySelector('#' + finder).classList.toggle('active');
+    }
   }
 }
