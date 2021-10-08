@@ -221,16 +221,12 @@ function toggleMenuState() {
     const menu = document.querySelector('.appBottomMenu');
 
     if (menu) {
-      menu.querySelector('.active');
-      menu.classList.toggle('active');
       document.querySelector('#' + finder).classList.toggle('active');
     }
   } else {
     const menu = document.querySelector('.appBottomMenu');
 
     if (menu) {
-      menu.querySelector('.active');
-      menu.classList.toggle('active');
       document.querySelector('#' + finder).classList.toggle('active');
     }
   }
