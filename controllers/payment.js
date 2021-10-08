@@ -29,12 +29,11 @@ const sendCash = async (req, res) => {
 // BuyCoins webhook controller
 const buyCoins = async (req, res) => {
   // collecting the response from buycoins
-  console.log([req.body]);
+  console.log(req.body);
 
   webhook_signature = req.headers['X-Webhook-Signature'];
 
-  // sign events sent to webhook url with webhook token
-  const hash = buycoins.webhook.sign(req.body, process.env.BUYCOINS_TOKEN);
+  console.log(webhook_signature);
 
   //verify that requests to your Webhook URL are coming from BuyCoins
   const isValid = buycoins.webhook.verify(
