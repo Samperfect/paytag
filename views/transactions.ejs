@@ -42,7 +42,20 @@
     <!-- * loader -->
 
     <!-- App Header -->
-    <%- include('./partials/header') %>
+    <div class="appHeader">
+      <div class="left">
+        <a href="#" class="headerButton goBack">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="pageTitle">Transactions</div>
+      <div class="right">
+        <!-- <a href="app-notifications.html" class="headerButton">
+          <ion-icon class="icon" name="notifications-outline"></ion-icon>
+          <span class="badge badge-danger">4</span>
+        </a> -->
+      </div>
+    </div>
     <!-- * App Header -->
 
     <!-- App Capsule -->
@@ -129,10 +142,10 @@
 
       <!-- Transactions -->
       <div class="section mt-4">
-        <div class="section-heading">
-          <h2 class="title">My Transactions</h2>
-          <!-- <a href="/user/transactions" class="link">View All</a> -->
-        </div>
+        <!-- <div class="section-heading"> -->
+        <!-- <h2 class="title">My Transactions</h2> -->
+        <!-- <a href="/user/transactions" class="link">View All</a> -->
+        <!-- </div> -->
         <div class="transactions">
           <% if (transactions.length > 0){ %> <% transactions.forEach(
           transaction => { %>
@@ -178,7 +191,8 @@
                 "
               >
                 <%= transaction.transactionId.sign %> <%= user.currency %> <%=
-                transaction.transactionId.amount.toFixed(2) %>
+                transaction.transactionId.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,
+                ",") %>
               </div>
             </div>
           </a>

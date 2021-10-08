@@ -90,7 +90,8 @@
                     <% }%>
                     <span class="text-success">
                       <%= user.currency %> <%=
-                      payment.paymentId.amount.toFixed(2) %></span
+                      payment.paymentId.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,
+                      ",") %></span
                     >
                   </div>
                   <div class="text-small mb-05 text-primary">

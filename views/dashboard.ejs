@@ -55,7 +55,8 @@
             <div class="left">
               <span class="title">Total Balance</span>
               <h1 style="font-size: 26px" class="total">
-                <%= user.currency %> <%= user.wallet.toFixed(2) %>
+                <%= user.currency %> <%=
+                user.wallet.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
               </h1>
             </div>
             <div class="right">
@@ -411,7 +412,8 @@
             <div class="stat-box">
               <div class="title">Total In</div>
               <div style="font-size: 15px" class="value text-success">
-                <%= user.currency %> <%= user.income.toFixed(2) %>
+                <%= user.currency %> <%=
+                user.income.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
               </div>
             </div>
           </div>
@@ -419,7 +421,8 @@
             <div class="stat-box">
               <div class="title">Total Spent</div>
               <div style="font-size: 15px" class="value text-danger">
-                <%= user.currency %> <%= user.spent.toFixed(2) %>
+                <%= user.currency %> <%=
+                user.spent.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>
               </div>
             </div>
           </div>
@@ -429,7 +432,9 @@
             <div class="stat-box">
               <div class="title">Total Withdrawn</div>
               <div style="font-size: 15px" class="value">
-                <%= user.currency %> <%= user.withdrawn.toFixed(2) %>
+                <%= user.currency %> <%=
+                user.withdrawn.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                %>
               </div>
             </div>
           </div>
@@ -493,7 +498,8 @@
                 "
               >
                 <%= transaction.transactionId.sign %> <%= user.currency %> <%=
-                transaction.transactionId.amount.toFixed(2) %>
+                transaction.transactionId.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,
+                ",") %>
               </div>
             </div>
           </a>
@@ -790,7 +796,7 @@
                     class="md hydrated"
                     aria-label="close outline"
                   ></ion-icon>
-                  CANCEL
+                  CLOSE
                 </a>
               </div>
             </div>

@@ -1,6 +1,9 @@
 $(document).ready(function () {
   // do stuff
 
+  // setting the active menu
+  toggleMenuState();
+
   // setting up dark mode during load time
   const mode = localStorage.getItem('mode');
   const body = document.querySelector('body');
@@ -205,4 +208,27 @@ function closeModal() {
 
 function goBack() {
   window.history.back();
+}
+
+function toggleMenuState() {
+  var find = window.location.href.split('/');
+  console.log(find);
+  var finder = find[find.length - 1];
+
+  if (finder.length < 2) {
+    finder = find[find.length - 2];
+
+    document
+      .querySelector('.appBottomMenu')
+      .querySelector('.active')
+      .classList.toggle('active');
+
+    document.querySelector('#' + finder).classList.toggle('active');
+  } else {
+    document
+      .querySelector('.appBottomMenu')
+      .querySelector('.active')
+      .classList.toggle('active');
+    document.querySelector('#' + finder).classList.toggle('active');
+  }
 }
