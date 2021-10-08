@@ -89,7 +89,8 @@
                     <strong>Bank Transfer Deposit</strong>
                     <% }%>
                     <span class="text-success">
-                      <%= user.currency %> <%= payment.paymentId.amount %></span
+                      <%= user.currency %> <%=
+                      payment.paymentId.amount.toFixed(2) %></span
                     >
                   </div>
                   <div class="text-small mb-05 text-primary">

@@ -306,6 +306,13 @@ const allDeposits = async (req, res) => {
   res.render('payments', { user: req.user, payments: payments });
 };
 
+// user settings controller
+const settings = async (req, res) => {
+  const user = await User.findById(req.user._id).populate('payments.paymentId');
+
+  res.render('settings', { user: req.user });
+};
+
 // exporting the user controllers
 module.exports = {
   registerController,
@@ -319,4 +326,5 @@ module.exports = {
   dashboard,
   transactions,
   allDeposits,
+  settings,
 };

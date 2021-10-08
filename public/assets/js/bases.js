@@ -10,6 +10,13 @@ $(document).ready(function () {
 
   $('.rclose').on('click', () => window.location.reload());
 
+  // for toggling dark mode
+  $('#darkmodeSwitch').on('click', () => {
+    const body = document.querySelector('body');
+
+    body.classList.toggle('dark-mode');
+  });
+
   $('.scopy').on('click', async () => {
     const paytag = document.querySelector('#newpaytag');
 

@@ -44,6 +44,9 @@ userRouter.post('/update', auth.loginRequired, user.updateUser);
 // get all transactions route
 userRouter.get('/transactions', auth.loginRequired, user.transactions);
 
+// user settings route
+userRouter.get('/settings', auth.loginRequired, user.settings);
+
 // get all payments route
 userRouter.get('/deposits', auth.loginRequired, user.allDeposits);
 

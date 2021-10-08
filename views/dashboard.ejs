@@ -54,7 +54,9 @@
           <div class="balance">
             <div class="left">
               <span class="title">Total Balance</span>
-              <h1 class="total"><%= user.currency %> <%= user.wallet %></h1>
+              <h1 style="font-size: 26px" class="total">
+                <%= user.currency %> <%= user.wallet.toFixed(2) %>
+              </h1>
             </div>
             <div class="right">
               <a
@@ -408,16 +410,16 @@
           <div class="col-6">
             <div class="stat-box">
               <div class="title">Total In</div>
-              <div class="value text-success">
-                <%= user.currency %> <%= user.income %>
+              <div style="font-size: 15px" class="value text-success">
+                <%= user.currency %> <%= user.income.toFixed(2) %>
               </div>
             </div>
           </div>
           <div class="col-6">
             <div class="stat-box">
               <div class="title">Total Spent</div>
-              <div class="value text-danger">
-                <%= user.currency %> <%= user.spent %>
+              <div style="font-size: 15px" class="value text-danger">
+                <%= user.currency %> <%= user.spent.toFixed(2) %>
               </div>
             </div>
           </div>
@@ -426,8 +428,8 @@
           <div class="col-6">
             <div class="stat-box">
               <div class="title">Total Withdrawn</div>
-              <div class="value">
-                <%= user.currency %> <%= user.withdrawn %>
+              <div style="font-size: 15px" class="value">
+                <%= user.currency %> <%= user.withdrawn.toFixed(2) %>
               </div>
             </div>
           </div>
@@ -491,7 +493,7 @@
                 "
               >
                 <%= transaction.transactionId.sign %> <%= user.currency %> <%=
-                transaction.transactionId.amount %>
+                transaction.transactionId.amount.toFixed(2) %>
               </div>
             </div>
           </a>
@@ -540,7 +542,7 @@
                 "
               >
                 <%= transaction.transactionId.sign %> <%= user.currency %> <%=
-                transaction.transactionId.amount %>
+                transaction.transactionId.amount.toFixed(2) %>
               </div>
             </div>
           </a>

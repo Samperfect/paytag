@@ -71,7 +71,7 @@ const buyCoins = async (req, res) => {
   }
   if (status === false) {
     payment.status = 'Confirming';
-    payment.save();
+    await payment.save();
     res.sendStatus(200);
     return;
   } else {
@@ -99,17 +99,20 @@ const buyCoins = async (req, res) => {
 
     const sum = rate * amount;
 
-    payment.credited = sum;
+    payment.credited = sum.toFixed(2);
 
-    user.wallet = user.wallet + sum;
-    user.income = user.income + sum;
+    user.wallet = user.wallet + sum.toFixed(2);
+    user.income = user.income + sum.toFixed(2);
 
     // saving the user object
     await user.save();
 
+    // saving the payment object
+    await payment.save();
+
     // generating the transaction object
     const transact = {
-      amount: sum,
+      amount: sum.toFixed(2),
       description: 'Completed crypto deposit',
       sign: '+',
       author: user._id,
