@@ -18,6 +18,6 @@ paymentRouter.post('/sendcash/verify/', payment.sendCash);
 paymentRouter.post('/buycoins/verify/', payment.buyCoins);
 
 // webhook for sendcash
-paymentRouter.post('/buycoins/', payment.cryptoDeposit);
+paymentRouter.post('/buycoins/', auth.loginRequired, payment.cryptoDeposit);
 // exporting
 module.exports = { paymentRouter };

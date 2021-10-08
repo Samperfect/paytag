@@ -1,6 +1,7 @@
 // importing the required modules
 const { User } = require('../models/user');
 const { Transaction } = require('../models/transaction');
+const { Payment } = require('../models/payment');
 const bcrypt = require('bcrypt');
 const { Auth } = require('../middlewares/auth');
 const mongoose = require('mongoose');
@@ -295,6 +296,16 @@ const transactions = async (req, res) => {
   res.render('transactions', { user: req.user, transactions: transactions });
 };
 
+// get all payments controller
+const allDeposits = async (req, res) => {
+  const user = await User.findById(req.user._id).populate('payments.paymentId');
+
+  // const tags = user.tags;
+  const payments = user.payments.reverse();
+
+  res.render('payments', { user: req.user, payments: payments });
+};
+
 // exporting the user controllers
 module.exports = {
   registerController,
@@ -307,4 +318,5 @@ module.exports = {
   updateUser,
   dashboard,
   transactions,
+  allDeposits,
 };

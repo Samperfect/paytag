@@ -83,11 +83,19 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
+    payments: [
+      {
+        paymentId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'payment',
+        },
+      },
+    ],
     withdrawals: [
       {
         withdrawalId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'payment',
+          ref: 'withdrawal',
         },
       },
     ],

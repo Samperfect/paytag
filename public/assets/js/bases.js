@@ -21,6 +21,23 @@ $(document).ready(function () {
     window.location.reload();
   });
 
+  $('#copyamount').on('click', async () => {
+    const paytag = document.querySelector('#cryptoamount');
+
+    // paytag.select();
+    // paytag.setSelectionRange(0, 99999);
+
+    await navigator.clipboard.writeText(paytag.value);
+  });
+  $('#copyaddress').on('click', async () => {
+    const paytag = document.querySelector('#cryptoaddress');
+
+    // paytag.select();
+    // paytag.setSelectionRange(0, 99999);
+
+    await navigator.clipboard.writeText(paytag.value);
+  });
+
   // handling submission of send money form
   $('.send').on('submit', async function (e) {
     e.preventDefault();
@@ -87,6 +104,47 @@ $(document).ready(function () {
       document.querySelector('.fmsg').textContent = res.error;
       closeModal();
       toggleDialog('#fmodal');
+    }
+  });
+
+  // handling submission of deposit money form
+  $('.deposit').on('submit', async function (e) {
+    e.preventDefault();
+    const amount = document.querySelector('#damount').value;
+    const methodEl = document.querySelector('#dmethod');
+
+    const method = methodEl.options[methodEl.selectedIndex].value;
+
+    if (method === 'crypto') {
+      const data = { amount };
+
+      console.log(data);
+
+      var url = '/hidden/buycoins/';
+
+      const req = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const res = await req.json();
+
+      console.log(res);
+
+      if (res.status === true) {
+        document.querySelector('#rate').textContent = res.data.rate;
+        document.querySelector('#cryptoamount').value = res.data.cryptoAmount;
+        document.querySelector('#cryptoaddress').value = res.data.address;
+        closeModal();
+        toggleDialog('#dsmodal');
+      } else {
+        document.querySelector('.fmsg').textContent = res.error;
+        closeModal();
+        toggleDialog('#fmodal');
+      }
     }
   });
 });

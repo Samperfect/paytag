@@ -44,5 +44,8 @@ userRouter.post('/update', auth.loginRequired, user.updateUser);
 // get all transactions route
 userRouter.get('/transactions', auth.loginRequired, user.transactions);
 
+// get all payments route
+userRouter.get('/deposits', auth.loginRequired, user.allDeposits);
+
 // exporting the mainRouter
 module.exports = { userRouter };
