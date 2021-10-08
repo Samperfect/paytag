@@ -45,8 +45,9 @@ const buyCoins = async (req, res) => {
 
   console.log(isValid);
 
-  if (isValid) {
-  }
+  // if (isValid) {
+
+  // }
 
   res.sendStatus(200);
 };
