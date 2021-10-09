@@ -17,16 +17,16 @@ And frustration came the birth of Paytag!
 
 Paytag is a simple yet powerful and fluid payment and funds transfer system that allows for the crossborder movement and local spending of money such that funds do not necessarily have to be in-hand before purchases and payment of services can be made.
 
-- Paytag Wallet
-- Deposit via Cryptocurrency
+- Paytag Wallet - done
+- Deposit via Cryptocurrency - done - litecoin
 - Deposit via Bank Transfer
-- No need for transfers, paytags are there just for that.
+- No need for transfers, paytags are there just for that - done
 - Generate time-based Paytags
-- Generate pin-protected Paytags
-- Redeem paytags back to your wallet
+- Generate pin-protected Paytags - done
+- Redeem paytags back to your wallet - done
 - Delete Paytags
 - Modify Paytag pins
-- Receive money from someone overseas by just exchanging paytags
+- Receive money from someone overseas by just exchanging paytags - done
 - Receive payments from your customers through **Paytag Checkout**
 - Create fun-based giveaways where you generate and give out a pin-protected Paytag and have people solve a puzzle in order to determine the pin before redeeming the Paytag.
 - Paytag simply creates the opportunity for all in one remittance.

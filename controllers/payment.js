@@ -23,6 +23,11 @@ const buycoins = new BuyCoins({
 const sendCash = async (req, res) => {
   // collecting the response from sendcash
   console.log(req.body);
+  const event =
+    '615dbd9833a30c194d520624:Paytag_615dbd9833a30c194d520624:50000:2126451643:033';
+  const hash = buycoins.webhook.sign(event, process.env.SENDCASH_TOKEN);
+
+  console.log(hash);
 
   res.sendStatus(200);
 };

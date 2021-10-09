@@ -14,7 +14,13 @@
           </div>
           <div class="in">
             <strong><%= user.firstName %> <%= user.lastName%></strong>
-            <div class="text-muted"><%= user.username %></div>
+            <div
+              id="username"
+              data-username="<%= user._id %>"
+              class="text-muted"
+            >
+              <%= user.username %>
+            </div>
           </div>
           <a
             href="#"

@@ -825,8 +825,34 @@
     <!-- PWA SECTION END -->
 
     <!-- ========= JS Files =========  -->
-    <%- include('./partials/footer') %>
-  </body>
+    <script src="https://checkout.transfers.africa/lib/lib.bundle.js"></script>
 
-  <!-- Mirrored from Paytag.bragherstudio.com/view4/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 Sep 2021 23:26:40 GMT -->
+    <%- include('./partials/footer') %>
+
+    <script>
+      Transfers.init({
+        siteName: 'Paytag',
+        siteUrl: 'https://paytagz.herokuapp.com',
+        siteLogo: 'https://paytagz.herokuapp.com/assets/img/logo.png',
+        publicKey: 'pk_live_brPEKElgTDFXPJvMXFMaByKqGqEuijwR',
+      });
+
+      const userId = document.querySelector('#username').dataset.username;
+
+      async function payWithSendCash(user) {
+        const result = await Transfers.charge({
+          signature:
+            "<not your signature token - a signature that verifies you're initiating a transaction>",
+          amount: '<how much you want to charge in Naira>',
+          userId: '<a unique identifier for your user>',
+          destinationAccountNumber: '<recipient account number>',
+          destinationBankCode: '<recipient bank code>',
+          transactionReference: '<a unique identifier for your transaction>',
+          name: "optional: <the sender's full name if you want us to ensure that they're sending from their own bank account>",
+        });
+      }
+
+      payWithSendCash(userId);
+    </script>
+  </body>
 </html>
