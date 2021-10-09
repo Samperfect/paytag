@@ -218,6 +218,10 @@ function toggleMenuState() {
   if (finder.length < 2) {
     finder = find[find.length - 2];
 
+    if (finder.includes('paytagz') || finder.includes('localhost')) {
+      return;
+    }
+
     const menu = document.querySelector('.appBottomMenu');
 
     if (menu) {
